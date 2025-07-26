@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Screen reader only content */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Focus visible styles for better keyboard navigation */
+  .focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* High contrast mode utilities */
+  .high-contrast {
+    --tw-bg-white: #000000;
+    --tw-bg-gray-50: #1a1a1a;
+    --tw-bg-gray-100: #2d2d2d;
+    --tw-bg-gray-200: #404040;
+    --tw-text-gray-900: #ffffff;
+    --tw-text-gray-700: #e5e5e5;
+    --tw-text-gray-600: #cccccc;
+    --tw-text-gray-500: #b3b3b3;
+    --tw-border-gray-300: #666666;
+    --tw-border-gray-200: #555555;
+  }
+  
+  /* Font size utilities */
+  .font-large {
+    font-size: 1.125rem; /* 18px base instead of 16px */
+  }
+  
+  .font-large .text-sm {
+    font-size: 1rem; /* 16px instead of 14px */
+  }
+  
+  .font-large .text-xs {
+    font-size: 0.875rem; /* 14px instead of 12px */
+  }
+  
+  .font-extra-large {
+    font-size: 1.25rem; /* 20px base instead of 16px */
+  }
+  
+  .font-extra-large .text-sm {
+    font-size: 1.125rem; /* 18px instead of 14px */
+  }
+  
+  .font-extra-large .text-xs {
+    font-size: 1rem; /* 16px instead of 12px */
+  }
+  
+  /* Reduced motion utilities */
+  .reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Touch-friendly utilities */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .touch-target-large {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    @apply text-xs;
+  }
+  
+  @media (min-width: 640px) {
+    .text-responsive-xs {
+      @apply text-sm;
+    }
+  }
+  
+  .text-responsive-sm {
+    @apply text-sm;
+  }
+  
+  @media (min-width: 640px) {
+    .text-responsive-sm {
+      @apply text-base;
+    }
+  }
+  
+  .text-responsive-base {
+    @apply text-base;
+  }
+  
+  @media (min-width: 640px) {
+    .text-responsive-base {
+      @apply text-lg;
+    }
+  }
+  
+  .text-responsive-lg {
+    @apply text-lg;
+  }
+  
+  @media (min-width: 640px) {
+    .text-responsive-lg {
+      @apply text-xl;
+    }
+  }
+  
+  .text-responsive-xl {
+    @apply text-xl;
+  }
+  
+  @media (min-width: 640px) {
+    .text-responsive-xl {
+      @apply text-2xl;
+    }
+  }
+  
+  /* Mobile-first spacing */
+  .space-mobile {
+    @apply space-y-4 sm:space-y-6;
+  }
+  
+  .p-mobile {
+    @apply p-4 sm:p-6;
+  }
+  
+  .px-mobile {
+    @apply px-4 sm:px-6;
+  }
+  
+  .py-mobile {
+    @apply py-4 sm:py-6;
+  }
+  
+  /* Responsive grid utilities */
+  .grid-responsive-1 {
+    @apply grid-cols-1;
+  }
+  
+  .grid-responsive-2 {
+    @apply grid-cols-1 sm:grid-cols-2;
+  }
+  
+  .grid-responsive-3 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+  
+  .grid-responsive-4 {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  
+  /* Safe area utilities for mobile devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+@layer components {
+  /* Skip links for accessibility */
+  .skip-links {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 9999;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 8px;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: top 0.2s ease-in-out;
+  }
+
+  .skip-link:focus {
+    top: 8px;
+  }
+
+  .skip-link:hover,
+  .skip-link:focus {
+    background: #333;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  /* Mobile-optimized form inputs */
+  .form-input-mobile {
+    @apply block w-full px-4 py-3 text-base border border-gray-300 rounded-lg shadow-sm;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+    @apply disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed;
+    @apply min-h-[48px];
+  }
+  
+  /* Mobile-optimized buttons */
+  .btn-mobile {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-colors;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply min-h-[44px] px-4 py-3 text-base;
+  }
+  
+  .btn-mobile-sm {
+    @apply min-h-[40px] px-3 py-2 text-sm;
+  }
+  
+  .btn-mobile-lg {
+    @apply min-h-[52px] px-6 py-4 text-lg;
+  }
+  
+  /* Mobile-optimized cards */
+  .card-mobile {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200;
+    @apply p-4 sm:p-6;
+  }
+  
+  /* Mobile-optimized list items */
+  .list-item-mobile {
+    @apply flex items-center p-4 border-b border-gray-200 last:border-b-0;
+    @apply min-h-[60px] hover:bg-gray-50 active:bg-gray-100 transition-colors;
+  }
+  
+  /* Responsive table wrapper */
+  .table-responsive {
+    @apply overflow-x-auto -mx-4 sm:mx-0;
+    @apply sm:rounded-lg sm:border sm:border-gray-200;
+  }
+  
+  /* Mobile navigation styles */
+  .mobile-nav-item {
+    @apply flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-colors;
+    @apply min-h-[48px];
+  }
+  
+  /* Tablet-specific optimizations */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .tablet-optimized {
+      @apply px-6 py-4;
+    }
+    
+    .tablet-grid {
+      @apply grid-cols-2;
+    }
+    
+    .tablet-text {
+      @apply text-base;
+    }
+  }
+}
