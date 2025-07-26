@@ -9,6 +9,7 @@ import { ResponsiveLayout } from '@/components/layout/ResponsiveLayout'
 import { ResponsiveCard, ResponsiveCardHeader, ResponsiveCardGrid } from '@/components/layout/ResponsiveCard'
 import { TouchFriendlyButton } from '@/components/layout/TouchFriendlyButton'
 import { PageHeader } from '@/components/layout/NavigationHelper'
+import NotificationCenter from '@/components/ui/NotificationCenter'
 
 export default function DashboardPage() {
   const { user, profile, tenant } = useTenant()
@@ -78,7 +79,8 @@ export default function DashboardPage() {
                   Manage your properties efficiently from one place
                 </p>
               </div>
-              <div className="mt-4 sm:mt-0">
+              <div className="mt-4 sm:mt-0 flex items-center space-x-3">
+                <NotificationCenter />
                 <TouchFriendlyButton
                   variant="ghost"
                   size="sm"
@@ -143,7 +145,7 @@ export default function DashboardPage() {
                   className="group cursor-pointer"
                   onClick={() => router.push(action.href)}
                 >
-                  <div className={`${action.color} text-white p-4 sm:p-6 rounded-lg transition-all duration-200 group-hover:shadow-lg group-active:scale-95`}>
+                  <div className={`${action.color} text-white p-4 sm:p-6 rounded-lg transition-all duration-200 group-hover:shadow-lg group-hover:scale-105 group-active:scale-95 transform`}>
                     <h3 className="font-semibold text-base sm:text-lg mb-2">
                       {action.title}
                     </h3>
@@ -153,6 +155,67 @@ export default function DashboardPage() {
                   </div>
                 </div>
               ))}
+            </ResponsiveCardGrid>
+          </ResponsiveCard>
+
+          {/* Dashboard Stats */}
+          <ResponsiveCard>
+            <ResponsiveCardHeader 
+              title="Overview"
+              subtitle="Key metrics at a glance"
+            />
+            <ResponsiveCardGrid columns={2} className="sm:grid-cols-4">
+              <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-blue-600">Total Properties</p>
+                    <p className="text-2xl font-bold text-blue-900">12</p>
+                  </div>
+                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">🏠</span>
+                  </div>
+                </div>
+                <p className="text-xs text-blue-600 mt-2">+2 this month</p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-green-600">Active Bookings</p>
+                    <p className="text-2xl font-bold text-green-900">8</p>
+                  </div>
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">📅</span>
+                  </div>
+                </div>
+                <p className="text-xs text-green-600 mt-2">85% occupancy</p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-purple-600">Pending Tasks</p>
+                    <p className="text-2xl font-bold text-purple-900">5</p>
+                  </div>
+                  <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                </div>
+                <p className="text-xs text-purple-600 mt-2">2 overdue</p>
+              </div>
+              
+              <div className="bg-gradient-to-r from-emerald-50 to-emerald-100 p-4 rounded-lg border border-emerald-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium text-emerald-600">Monthly Revenue</p>
+                    <p className="text-2xl font-bold text-emerald-900">$24.5K</p>
+                  </div>
+                  <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">💰</span>
+                  </div>
+                </div>
+                <p className="text-xs text-emerald-600 mt-2">+12% vs last month</p>
+              </div>
             </ResponsiveCardGrid>
           </ResponsiveCard>
 
